@@ -1,37 +1,37 @@
-Guide d’installation du plugin PayPal Mobile
+Guide dï¿½installation du plugin PayPal Mobile
 ============================================
 
 Currently, only French is supported. For English, go here: https://github.com/ontech/PayPal-Mobile-Plugin-Zen-Cart
 
-Produit par ezimerchant
+<h2>Produit par ezimerchant</h2>
 
-Cliquez sur le bouton ‘ZIP’ en haut de la page pour télécharger le plugin. 
+1. Cliquez sur le bouton ï¿½ZIPï¿½ en haut de la page pour tï¿½lï¿½charger le plugin. 
 
-Si vous n’avez pas encore configuré le module PayPal Express Checkout sur Zen Cart, suivez les instructions ci-dessous. Si le module est déjà configuré, passez directement à l’étape 3. 
-a. Connectez-vous à votre compte PayPal
-b. Sous l’onglet “Mon compte”, cliquez sur “Préférences” 
-c. Allez sur “Mes Ventes”. Dans la partie “Vendre en ligne”, vous verrez la ligne “Accès à l’API“. Cliquez sur “Mettre à jour “.
-d. Un nouvel écran s’affichera. Cliquez sur “Demander des informations d’authentification API” en bas de l’option 2.  
-e. Vous aurez besoin de toutes ces données pour renseigner les informations d’identification PayPal sur Zen Cart
-f. Connectez-vous à Zen Cart
-g. Allez sur Modules -> Paiement et cliquez sur PayPal Express checkout.
-h. Copiez/collez les données obtenues lors de l’étape 2e. 
-i. Cliquez sur “Enregistrer”
+2. Si vous nï¿½avez pas encore configurï¿½ le module PayPal Express Checkout sur Zen Cart, suivez les instructions ci-dessous. Si le module est dï¿½jï¿½ configurï¿½, passez directement ï¿½ lï¿½ï¿½tape 3. 
+  a. Connectez-vous ï¿½ votre compte PayPal
+  b. Sous lï¿½onglet ï¿½Mon compteï¿½, cliquez sur ï¿½Prï¿½fï¿½rencesï¿½ 
+  c. Allez sur ï¿½Mes Ventesï¿½. Dans la partie ï¿½Vendre en ligneï¿½, vous verrez la ligne ï¿½Accï¿½s ï¿½ lï¿½APIï¿½. Cliquez sur ï¿½Mettre ï¿½ jour ï¿½.
+  d. Un nouvel ï¿½cran sï¿½affichera. Cliquez sur ï¿½Demander des informations dï¿½authentification APIï¿½ en bas de lï¿½option 2.  
+  e. Vous aurez besoin de toutes ces donnï¿½es pour renseigner les informations dï¿½identification PayPal sur Zen Cart
+  f. Connectez-vous ï¿½ Zen Cart
+  g. Allez sur Modules -> Paiement et cliquez sur PayPal Express checkout.
+  h. Copiez/collez les donnï¿½es obtenues lors de lï¿½ï¿½tape 2e. 
+  i. Cliquez sur ï¿½Enregistrerï¿½
 
-Extrayez le contenu du plugin dans votre dossier ‘public’. mobile.php doit être à la racine de votre dossier ‘public’, qui contient le sous-répertoire ‘mobile’.  
+3. Extrayez le contenu du plugin dans votre dossier ï¿½publicï¿½. mobile.php doit ï¿½tre ï¿½ la racine de votre dossier ï¿½publicï¿½, qui contient le sous-rï¿½pertoire ï¿½mobileï¿½.  
 
-Si vous avez un fichier .htaccess dans le dossier ‘hosting’, faites-en une sauvegarde. 
+4. Si vous avez un fichier .htaccess dans le dossier ï¿½hostingï¿½, faites-en une sauvegarde. 
 
-Fusionnez le fichier mobile.htaccess avec le fichier .htaccess (si vous en avez). Il contient la détection Mobile User Agent. Remarque : Si vous n’aviez pas de fichier .htaccess, renommez le fichier mobile.htaccess en .htaccess.
-Vérifiez que le site Web s’affiche correctement sur votre ordinateur. 
+5. Fusionnez le fichier mobile.htaccess avec le fichier .htaccess (si vous en avez). Il contient la dï¿½tection Mobile User Agent. Remarque : Si vous nï¿½aviez pas de fichier .htaccess, renommez le fichier mobile.htaccess en .htaccess.
+Vï¿½rifiez que le site Web sï¿½affiche correctement sur votre ordinateur. 
 
-Faites de même sur le téléphone et testez le processus de commande
+6. Faites de mï¿½me sur le tï¿½lï¿½phone et testez le processus de commande
 
-Annuler l’installation
+<h2>Annuler lï¿½installation</h2>
 
-Annulez les modifications apportées au fichier .htaccess ou remettez le fichier .htaccess pré-sauvegardé pour annuler les modifications. Ceci devrait suffire à revenir à une configuration précédente 
+Annulez les modifications apportï¿½es au fichier .htaccess ou remettez le fichier .htaccess prï¿½-sauvegardï¿½ pour annuler les modifications. Ceci devrait suffire ï¿½ revenir ï¿½ une configuration prï¿½cï¿½dente 
 
 Etapes optionnelles
 
-Supprimez le fichier mobile.php à la racine de du dossier ‘public hosting’
-Supprimez le sous-répertoire‘mobile’ qui a été créé précédemment.
+Supprimez le fichier mobile.php ï¿½ la racine de du dossier ï¿½public hostingï¿½
+Supprimez le sous-rï¿½pertoireï¿½mobileï¿½ qui a ï¿½tï¿½ crï¿½ï¿½ prï¿½cï¿½demment.

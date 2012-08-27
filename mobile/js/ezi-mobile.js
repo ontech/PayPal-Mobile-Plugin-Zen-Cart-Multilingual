@@ -3,10 +3,9 @@ var MiniCart;
 
 $("[data-role=page]").live('pageshow', function(){		
 	
-	
-	$("#paypalbutton").attr("src", "mobile/images/btn_checkout_278x43.png");
+	$("#paypalbutton").attr("src", language.checkoutWithPaypal);
 	$("#paypalbutton").live("click", function(){
-		$(this).attr("src", "mobile/images/btn_checkout_278x43down.png");
+		$(this).attr("src", language.checkoutWithPaypalDown);
 	});
 
 	$(".ui-li").removeClass("prodclick");

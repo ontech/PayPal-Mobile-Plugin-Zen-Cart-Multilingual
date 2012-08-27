@@ -12,8 +12,16 @@
 	{
 		window.location = "cookies.php";
 	}
-	</script>
+	var language = { 
+		code: "<?php echo $_SESSION['languages_code'] ?>",
+		id: "<?php echo $_SESSION['languages_id'] ?>",
+		language: "<?php echo $_SESSION['language'] ?>",
+		paypal: "<?php echo $_SESSION['PaypalLanguages']['language'] ?>",
+	};
+	language.checkoutWithPaypal = "<?php echo $_SESSION['PaypalLanguages']['checkoutWithPaypal'] ?>";
+	language.checkoutWithPaypalDown = "<?php echo $_SESSION['PaypalLanguages']['checkoutWithPaypalDown'] ?>";
 	
+	</script>
 	<script src="mobile/js/jquery-1.8.0.min.js"></script>
 	<script src="mobile/js/jquery.mobile-1.1.1.min.js"></script>
 	<script type="text/javascript" src="mobile/js/ezi-mobile.js?3"></script>

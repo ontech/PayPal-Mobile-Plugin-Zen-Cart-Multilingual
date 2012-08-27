@@ -1,6 +1,7 @@
 <?php
-	ini_set('display_errors', 'on');
-	error_reporting(E_ALL - E_NOTICE);
+	ini_set('display_errors', 'off');
+	error_reporting(0);
+
 	function e(){
 		echo "<script>console.log(";
 		echo json_encode(array(func_get_arg(1),
@@ -9,12 +10,23 @@
 		echo ");</script>";
 		
 	}
-	set_error_handler('e');
-	set_exception_handler('e');
-	include("mobile/language_fr.php");
+// 	uncomment the following four lines to see errors in the javascript console. 
+//	set_error_handler('e');
+//	set_exception_handler('e');
+//	ini_set('display_errors', 'on');
+//	error_reporting(E_ALL - E_NOTICE);
+
 	if(!defined('SKIP_SINGLE_PRODUCT_CATEGORIES')) define('SKIP_SINGLE_PRODUCT_CATEGORIES', 'False');
 	require('includes/application_top.php');
-        $_SESSION['paypal_ec_markflow'] = 1;
+	include("mobile/language_".$_SESSION['languages_code'] .".php");
+
+
+	$_SESSION['PaypalLanguages'] = array();
+	$_SESSION['PaypalLanguages']['language'] = $_SESSION['languages_code'] . "_" . strtoupper($_SESSION['languages_code']);
+	$_SESSION['PaypalLanguages']['checkoutWithPaypal'] = "mobile/images/" . $_SESSION['PaypalLanguages']['language'] . "/_buttons/@2x/normal/CO_" . $_SESSION['PaypalLanguages']['language'] . "_orange_19x24@2x.png";
+	$_SESSION['PaypalLanguages']['checkoutWithPaypalDown'] = "mobile/images/" . $_SESSION['PaypalLanguages']['language'] . "/_buttons/@2x/normal/CO_" . $_SESSION['PaypalLanguages']['language'] . "_orange_19x24@2x.png";
+	$_SESSION['paypal_ec_markflow'] = 1;
+
         
 	if(isset($_GET["main_page"]) && $_GET["main_page"] == "login")
 	{
@@ -212,7 +224,10 @@ if(matchproduct())
 {
 	$select_column_list = 'pd.products_name, p.products_image, ';
 	require('includes/index_filters/default_filter.php');
-	define('TEXT_PRODUCT_OPTIONS', 'Please Choose: ');
+	
+	include(DIR_WS_LANGUAGES . $_SESSION['language'] . '/product_info.php');
+	//define('TEXT_PRODUCT_OPTIONS', 'Please Choose: ');
+
 	define('ATTRIBUTES_PRICE_DELIMITER_PREFIX', ' (');
 	define('ATTRIBUTES_PRICE_DELIMITER_SUFFIX', ') ');
 	require('includes/modules/attributes.php');

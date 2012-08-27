@@ -17,6 +17,7 @@
            and    pd.products_id = p.products_id
            and    pd.language_id = '" . (int)$_SESSION['languages_id'] . "'";
     $product_info = $db->Execute($sql);
+	
 ?>
 
 <div>
@@ -112,7 +113,8 @@ if (CUSTOMERS_APPROVAL != 3 and TEXT_LOGIN_FOR_PRICE_BUTTON_REPLACE_SHOWROOM != 
 
 	<?php
 		//include('includes/templates/template_default/templates/tpl_modules_attributes.php');
-		require($template->get_template_dir('/tpl_modules_attributes.php',DIR_WS_TEMPLATE,$current_page_base,'templates'). '/tpl_modules_attributes.php');
+			require($template->get_template_dir('/tpl_modules_attributes.php',DIR_WS_TEMPLATE,$current_page_base,'templates'). '/tpl_modules_attributes.php');
+//echo $template->get_template_dir('/tpl_modules_attributes.php',DIR_WS_TEMPLATE,$current_page_base,'templates'). '/tpl_modules_attributes.php';	
 	?>
 		<div style="padding: 0.5em; padding-top: 0.8em;">
 		<?php 

@@ -13,8 +13,8 @@
 
 	<div id="PayPalExpressCheckout" style="margin-bottom: 1em; ">
 		<a rel="external" href="ipn_main_handler.php?type=ec">
-				<img id="paypalbutton" src="mobile/images/btn_checkout_278x43.png" />
-				<img style="display:none;" src="mobile/images/btn_checkout_278x43down.png" />
+				<img id="paypalbutton" src="<?php echo $_SESSION['PaypalLanguages']['checkoutWithPaypal'] ?>" />
+				<img style="display:none;" src="<?php echo $_SESSION['PaypalLanguages']['checkoutWithPaypalDown'] ?>" />
 		</a>
 	</div>
 

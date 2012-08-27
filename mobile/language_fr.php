@@ -3,6 +3,7 @@ $_['Products'] = "Produits";
 $_['Featured Products'] = "Top produits";
 $_['oops'] = "Oops";
 $_['Total'] = "Total";
+$_['Go'] = "Go";
 $_['Sorry the page you visited does not exist'] = "Sorry the page you visited doesn't exist";
 $_['Cart'] = $_['cart'] = "Panier";
 $_['name'] = "Nom";

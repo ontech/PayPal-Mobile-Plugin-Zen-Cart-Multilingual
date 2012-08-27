@@ -8,12 +8,12 @@
                 <input class="suggest ui-input-text ui-body-null" type="text" id="searchinput" data-type="search" name="keyword" placeholder="<?php echo $_['Search'] ?>" autocomplete="off" value="<?php echo htmlspecialchars(stripslashes($_GET['keyword'])); ?>">
             </td>
             <td>
-                <input type="submit" value="Go" style="background:none; border:2px solid #dedede; box-shadow:2px 2px 2px 2px #999;  border-radius:10px;" data-role="none"/>
+                <input type="submit" value="<?php echo $_['Go'] ?>" style="background:none; border:2px solid #dedede; box-shadow:2px 2px 2px 2px #999;  border-radius:10px;" data-role="none"/>
             </td></tr></table>
 </form>
 
 <?php
-if ($result->number_of_rows > 0) {
+if ($result && $result->number_of_rows > 0) {
 
     $resultset = $db->Execute($result->sql_query);
     $listing = $resultset;
@@ -49,7 +49,7 @@ if ($result->number_of_rows > 0) {
                                                 <!--{if !OptionSet}-->
                                                 <input type="submit" class="buy" data-theme="e" value="<?php echo $_['Add to Cart']; ?>" /><br/>
                                                        <!--{/if}-->
-                                                       <a href="prod<?php echo $listing->fields['products_id']; ?>.htm" class="ui-link" style="color: #2489CE !important; text-shadow: none;">More info...</a>
+                                                       <a href="prod<?php echo $listing->fields['products_id']; ?>.htm" class="ui-link" style="color: #2489CE !important; text-shadow: none;"><?php echo $_['More info...'] ?></a>
                                             </td></tr></table>
                                 </form>
                             </td>

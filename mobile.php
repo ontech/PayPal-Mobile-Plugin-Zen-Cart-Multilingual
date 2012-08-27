@@ -1,20 +1,25 @@
 <?php
 	ini_set('display_errors', 'off');
 	error_reporting(0);
-
 	function e(){
-		echo "<script>console.log(";
-		echo json_encode(array(func_get_arg(1),
+
+		if(strpos(func_get_arg(1), 'is_a()')===FALSE 
+		&& strpos(func_get_arg(1), 'Constant')===FALSE
+		&& strpos(func_get_arg(1), 'No such file or ')===FALSE)
+		{ 
+			echo "<script>console.log(";
+			echo json_encode(array(func_get_arg(1),
 				func_get_arg(2),
 				func_get_arg(3)));
-		echo ");</script>";
+			echo ");</script>";
+		}
 		
 	}
-// 	uncomment the following four lines to see errors in the javascript console. 
-//	set_error_handler('e');
-//	set_exception_handler('e');
-//	ini_set('display_errors', 'on');
-//	error_reporting(E_ALL - E_NOTICE);
+	//ini_set('display_errors', 'on');
+	//error_reporting(E_ALL - E_NOTICE);
+	//set_error_handler('e');
+	//set_exception_handler('e');
+
 
 	if(!defined('SKIP_SINGLE_PRODUCT_CATEGORIES')) define('SKIP_SINGLE_PRODUCT_CATEGORIES', 'False');
 	require('includes/application_top.php');
@@ -34,29 +39,28 @@
 		header("HTTP/1.1 303 See Other");
 		header("Location: http://".$_SERVER[HTTP_HOST]."/". DIR_WS_CATALOG ."/ipn_main_handler.php?type=ec");
 	}  
-	
 
-  
+
 	$language_page_directory = DIR_WS_LANGUAGES . $_SESSION['language'] . '/';
 	$directory_array = $template->get_template_part($code_page_directory, '/^header_php/');
+
 	foreach ($directory_array as $value) { 
-/**
- * We now load header code for a given page. 
- * Page code is stored in includes/modules/pages/PAGE_NAME/directory 
- * 'header_php.php' files in that directory are loaded now.
- */
-		require($code_page_directory . '/' . $value);
-    }
-  
+	/**
+	 * We now load header code for a given page. 
+	 * Page code is stored in includes/modules/pages/PAGE_NAME/directory 
+	 * 'header_php.php' files in that directory are loaded now.
+	 */
+
+			require($code_page_directory . '/' . $value);
+	}
+
 /* Debugging
 $device = $_SERVER['template'];
 echo "this device is a $device";
-$pagename = $_SERVER['REQUEST_URI'];
-echo "page url: $pagename";
-*/
-?>
+$pagename = 
 
-<?php
+*/
+
 function matchhome(){
 	global $db, $zco_notifier, $template;
  
@@ -103,6 +107,7 @@ function matchcart(){
 	}
 }
 matchcart();
+	
 
 function matchcheckoutsuccess(){
 	global $zv_orders_id, $orders_id, $orders, $define_page, $template;
@@ -260,6 +265,7 @@ if(matchgallery())
 	die();
 }
 
+	
 function matchsearch(){
 	global $result;
 	global $db;
@@ -272,7 +278,9 @@ function matchsearch(){
 	$catalogFolder = preg_replace("/\\/$/", "", $catalogFolder);
 	$subject = preg_replace("/".preg_quote($catalogFolder, "/")."/", "", $requestURI);
 
-	$pattern = '/(^\/search\/?(?:$|\?)|^\/index.php\?main_page=advanced_search)/';
+	$pattern = '/(^\/search\/?(?:$|\?)|^\/index\.php\?main_page=advanced_search)/';
+//http://fr.eztxn.com/index.php?main_page=advanced_search&keyword=fgddhg&inc_subcat=0&search_in_description=0&sort=20a
+
 	preg_match($pattern, $subject, $matches);
 	if ($matches) {
 		$select_column_list = 'pd.products_name, p.products_image, ';

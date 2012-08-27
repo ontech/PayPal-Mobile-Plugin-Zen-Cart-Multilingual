@@ -7,7 +7,7 @@
 			<table><tr><td>
 			<div class="ui-input-search ui-shadow-inset ui-btn-corner-all ui-btn-shadow ui-icon-searchfield" style="width: inherit;">
 				<input class="suggest ui-input-text ui-body-null" type="text" id="searchinput" data-type="search" name="keyword" placeholder="<?php echo $_['Search'] ?>" autocomplete="off" value="">
-				<a href="#" class="ui-input-clear ui-btn ui-btn-up-b ui-btn-icon-notext ui-btn-corner-all ui-shadow" title="clear text" data-theme="b">
+				<a href="#" class="ui-input-clear ui-btn ui-btn-up-b ui-btn-icon-notext ui-btn-corner-all ui-shadow" title="<?php echo $_['clear text'] ?>" data-theme="b">
 					<span class="ui-btn-inner ui-btn-corner-all">
 						<span class="ui-btn-text"><?php echo $_['clear text'] ?></span>
 						<span class="ui-icon ui-icon-delete ui-icon-shadow"></span>
@@ -15,7 +15,7 @@
 				</a>
 			</div>
 			</td><td>
-			<input type="submit" value="Go" style="background:none; border:2px solid #dedede; box-shadow:2px 2px 2px 2px #999;  border-radius:10px;"/>
+			<input type="submit" value="<?php echo $_['Go'] ?>" style="background:none; border:2px solid #dedede; box-shadow:2px 2px 2px 2px #999;  border-radius:10px;"/>
 			</td></tr></table>
 			
 		</form>

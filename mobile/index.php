@@ -1,6 +1,7 @@
 <?php include 'header.php'; ?>
  
 <?php
+//we could include /includes/modules/listing_display_order.php here to get the right sort order, but at this stage the mobile plugin only displays them in one sort order
 $listing_sql = 
 "select pd.products_name, p.products_quantity_order_max, 
 	p.products_image, p.products_id, p.products_type, 
@@ -13,12 +14,16 @@ from " . DB_PREFIX . "products_description pd, " . DB_PREFIX . "products p
 left join " . DB_PREFIX . "manufacturers m on p.manufacturers_id = m.manufacturers_id, 
 " . DB_PREFIX . "products_to_categories p2c left join " . DB_PREFIX .
  "specials s on p2c.products_id = s.products_id where p.products_status = 1 and
- p.products_id = p2c.products_id and pd.products_id = p2c.products_id and pd.language_id = 
-(select languages_id from `". DB_PREFIX ."languages` WHERE 
-code = (SELECT configuration_value FROM `". DB_PREFIX ."configuration` WHERE configuration_key='DEFAULT_LANGUAGE') LIMIT 1)";
+ p.products_id = p2c.products_id and pd.products_id = p2c.products_id and pd.language_id = " . ((int)$_SESSION['languages_id']) . " 
+	ORDER BY p.products_sort_order";
+
+
 $listing_split = new splitPageResults($listing_sql, MAX_DISPLAY_PRODUCTS_LISTING, 'p.products_id', 'page');
 $listing = $db->Execute($listing_split->sql_query);
 $productcheck = $listing->fields['products_id'];
+
+
+ 
 ?>
 
 <?php if ($productcheck) : ?>
@@ -43,8 +48,8 @@ $productcheck = $listing->fields['products_id'];
             <!--			<input type="hidden" name="products_id" value="<?php echo $listing->fields['products_id']; ?>"/> -->
             <!--			<input type="hidden" name="cart_quantity" value="1" maxlength="6" size="4"> -->
                                     <!--bof Add to Cart Box -->
-                                        <?php if (CUSTOMERS_APPROVAL != 3 && TEXT_LOGIN_FOR_PRICE_BUTTON_REPLACE_SHOWROOM != '') :  ?>
-                                        <?php
+                                        <?php 
+					if (CUSTOMERS_APPROVAL != 3 && TEXT_LOGIN_FOR_PRICE_BUTTON_REPLACE_SHOWROOM != '') { 
                                             $flag_show_product_info_in_cart_qty = zen_get_show_product_switch($listing->fields['products_id'], 'in_cart_qty');
                                             $display_qty = (($flag_show_product_info_in_cart_qty == 1 and $_SESSION['cart']->in_cart($listing->fields['products_id'])) ? '<p>' . PRODUCTS_ORDER_QTY_TEXT_IN_CART . $_SESSION['cart']->get_quantity($listing->fields['products_id']) . '</p>' : '');
 
@@ -58,9 +63,8 @@ $productcheck = $listing->fields['products_id'];
                                                 $the_button = '<input type="text" name="cart_quantity" value="' . (zen_get_buy_now_qty($listing->fields['products_id'])) . '" maxlength="6" size="4" /><br />' . zen_draw_hidden_field('products_id', $listing->fields['products_id']); // . zen_image_submit(BUTTON_IMAGE_IN_CART, BUTTON_IN_CART_ALT);
                                             }
                                             $display_button = zen_get_buy_now_button($listing->fields['products_id'], $the_button);
-                                        ?>
-                                        <?php if ($display_qty != '' or $display_button != '') echo $display_qty; ?>
-                                    <?php endif; ?>
+                                            if ($display_qty != '' or $display_button != '') echo $display_qty; 
+                                         } ?> 
                                     <table width="100">
                                         <tr><td style="border:none; vertical-align:middle">
                                                 <span class="price">
@@ -71,10 +75,18 @@ $productcheck = $listing->fields['products_id'];
                                         <tr>
                                             <td style="border:none; vertical-align:middle;">
                                             <?php if (!zen_has_product_attributes($listing->fields['products_id']) && CUSTOMERS_APPROVAL != 3 && TEXT_LOGIN_FOR_PRICE_BUTTON_REPLACE_SHOWROOM != '') :?>
-                                                  <a data-transition="slide" href="prod<?php echo $listing->fields['products_id']; ?>.htm?products_id=<?php echo $listing->fields['products_id']; ?>" class="ui-link" style="color: #2489CE !important; text-shadow: none;"><?php echo $_['More info...'] ?></a>
+						 <p>
+						   <a data-transition="slide" href="prod<?php echo $listing->fields['products_id']; ?>.htm?products_id=<?php echo $listing->fields['products_id']; ?>" class="ui-link" style="color: #2489CE !important; text-shadow: none;"><?php echo $_['More info...'] ?></a>
                                                    <?php  if ($display_button !='')  echo $display_button; ?>
-                                                   <input type="submit" class="buy" data-theme="e" value="<?php echo $_['Add to Cart']; ?>" /><br/>
-                                            <?php endif; ?>
+                                                   <input type="submit" class="buy" data-theme="e" value="<?php echo $_['Add to Cart']; ?>" />
+                                                 </p>
+                                            <?php endif; if(zen_has_product_attributes($listing->fields['products_id'])) : ?>
+						   <p>
+  						      <a data-transition="slide" href="prod<?php echo $listing->fields['products_id']; ?>.htm?products_id=<?php echo $listing->fields['products_id']; ?>" class="ui-link" style="color: #2489CE !important; text-shadow: none;"><?php echo $_['More info...'] ?></a><br/>
+						 
+						      <a data-theme="e"  href="prod<?php echo $listing->fields['products_id']; ?>.htm?products_id=<?php echo $listing->fields['products_id']; ?>" data-role="button"><?php echo $_['Add to Cart'] ?></a>
+						   </p>
+					    <?php endif; ?>
                                             </td>
                                          </tr>
                                    </table>

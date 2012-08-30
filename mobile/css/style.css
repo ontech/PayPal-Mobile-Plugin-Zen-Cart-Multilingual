@@ -70,7 +70,15 @@ body {
 	height:100%;
 	font-size:14px;
 }
-
+#addtocartmsg{
+	display: none; 
+	position: absolute; 
+	top: 120px; 
+	left: 10px; 
+	height: 240px; 
+	width: 90%; 	
+	text-align: center;
+}
 .brief a {
 	color:#FF9900 !important;
 	text-decoration:none;
@@ -78,7 +86,22 @@ body {
 	display:block;
 	padding-bottom:3px;
 }
-
+.brief .ui-btn-text {
+	color:#333 !important;
+	
+}
+.ui-btn-inner{
+	font-size:14px;
+}
+input[name=cart_quantity]{
+	width: 50px;
+}
+input[name=cart_quantity]:before{
+	content:"Qty ";
+}
+.ui-navbar .ui-btn-text{
+	font-size:11px;
+}
 .ui-header .ui-title {
 	min-height: 26px;
 }
@@ -237,9 +260,11 @@ h1.fn {
 
 .productform .ui-submit
 {
-	margin-left: -3px;
+	/*margin-left: -3px;*/
 }
-
+.ui-btn-inner .ui-btn-text{
+	
+}
 /*
 	-webkit-box-shadow: 0 0 1px #000;
 	background-color: #f00;

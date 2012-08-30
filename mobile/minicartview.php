@@ -38,6 +38,9 @@ for ($i=0;$i<sizeof($products);$i++) {
 				<td><div style="width:30px;"><?php echo $products[$i]['quantity'];?></div></td>
 				<td align="left"><div style="width:180px; padding-top:5px; height:20px; white-space:nowrap; overflow: hidden; text-overflow:ellipsis;"><?php echo htmlspecialchars($products[$i]['name']); ?></div></td>
 				<td align="left"><div style="width:60px;"> <?php echo $currencies->display_price($products[$i]['final_price'], 0, $products[$i]['quantity']); ?></div></td>
+				<td align="left">
+					<a href="index.php?main_page=shopping_cart&action=remove_product&product_id=<?php echo $products[$i]['id'] ?>">&times;</a>
+				</td>
 			</tr>
 		</table>
 		</div>

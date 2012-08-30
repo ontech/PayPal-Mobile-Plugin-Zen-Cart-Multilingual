@@ -86,7 +86,6 @@ if(matchhome())
 	include 'mobile/index.php';
 	die();
 }
-
 function matchcart(){
 	global $productArray;
 	global $cartShowTotal;
@@ -101,7 +100,10 @@ function matchcart(){
   
 	$pattern = '/index.php\?main_page=shopping_cart/';
 	preg_match($pattern, $subject, $matches);
+	
 	if ($matches) {
+	
+
 		include 'mobile/cart.php';
 		die();
 	}

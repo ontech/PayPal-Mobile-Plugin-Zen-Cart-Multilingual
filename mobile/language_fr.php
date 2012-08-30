@@ -2,31 +2,30 @@
 $_['Products'] = "Produits";
 $_['Featured Products'] = "Top produits";
 $_['oops'] = "Oops";
+$_['Gallery'] = "Galerie";
 $_['Total'] = "Total";
 $_['Go'] = "Go";
 $_['Sorry the page you visited does not exist'] = "Sorry the page you visited doesn't exist";
 $_['Cart'] = $_['cart'] = "Panier";
 $_['name'] = "Nom";
 $_['price']= "Prix";
-$_['delete'] = "Delete";
-$_['qty'] = "Quantité";
+$_['delete'] = "Supprimer";
+$_['Qty'] = $_['qty'] = "Quantité";
 $_['Thank You! We Appreciate your Business!'] = "Nous vous remercions de votre confiance. Détails de votre commande";
 $_['OsCommerce'] = "OsCommerce";
-$_['cookies'] = "Sorry, cookies are currently not enabled in your browser, cookies are necessary to shop 
-on this site, you will be able to find a preference in your phone's browser to re-enable them again 
-if you wish to do so.";
-$_['You can click here once you have enabled them again to start shopping.'] = 'You can <a href="./">click here</a>once you have enabled them again to start shopping.';
-$_['Done'] = "Done";
+$_['cookies'] = "Désolé, les cookies ne sont pas actuellement activé sur votre navigateur, les cookies sont nécessaires pour acheter sur ce site, vous serez en mesure de trouver une préférence dans le navigateur de votre téléphone pour les réactiver à nouveau si vous le souhaitez";
+$_['You can click here once you have enabled them again to start shopping.'] = 'Vous pouvez <a href="./">cliquer ici</a> une fois que vous les avez réactiver pour continuer vos achats..';
+$_['Done'] = "Fait";
 $_['Home'] = "Accueil";
 $_['Your search has produced no results'] = "Aucun résultat trouvé";
 $_['Categories'] = "Catégories";
 $_['Search'] = "Recherche";
-$_['Cookies are not enabled'] = "Cookies are not enabled";
+$_['Cookies are not enabled'] = "les cookies ne sont pas actuellement activé";
 $_['Results'] = "Résultats";
 $_['More info...'] = "Plus d'infos";
-$_['click here'] = "click here";
-$_['once you have enabled them again to start shopping.'] = "once you have enabled them again to start shopping.";
-$_['Qty'] = "Qty";
+$_['click here'] = "Cliquer ici";
+$_['once you have enabled them again to start shopping.'] = "une fois que vous les avez réactiver pour continuer vos achats.";
+
 $_['Your cart is empty'] = "Votre panier est vide";
 $_['Shopping Cart'] = "Panier";
 $_['Edit...'] = "Modifier";
@@ -41,7 +40,7 @@ $_['Update Cart'] = "Mettre à jour le panier";
 $_['Edit Cart'] = "Modifier le panier";
 $_['There is no description for this product'] = 'There is no description for this product';
 $_['You have x items in your cart the total is y'] = 'Votre panier contient <span class="itemcount">{count}</span> article(s).<br/>Total: <span class="total">{total}</span>';
-$_['Your order number is x'] = "Votre numéro de commande :";
+$_['Your order number is x'] = "Votre numéro de commande: {order}";
 foreach($_ as $k => $v){
 	$_[$k] =  iconv("ISO-8859-1//TRANSLIT","UTF-8", $v);
 }

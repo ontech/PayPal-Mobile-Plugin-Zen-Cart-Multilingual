@@ -9,6 +9,7 @@
 /**
  * require the html_defined text for checkout success
  */
+
   require($define_page);
 ?>
 

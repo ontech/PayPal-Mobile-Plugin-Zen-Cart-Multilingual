@@ -20,9 +20,16 @@
 	//set_error_handler('e');
 	//set_exception_handler('e');
 
+	$defaults = array(
+		'languages_code' => 'fr',
+		'language' => 'french',
+		'languages_id' => 2
+	);
 
 	if(!defined('SKIP_SINGLE_PRODUCT_CATEGORIES')) define('SKIP_SINGLE_PRODUCT_CATEGORIES', 'False');
 	require('includes/application_top.php');
+	
+	$_SESSION = array_merge($defaults, $_SESSION);		
 	include("mobile/language_".$_SESSION['languages_code'] .".php");
 
 

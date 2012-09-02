@@ -31,3 +31,11 @@ Etapes optionnelles
 
 Supprimez le fichier mobile.php à la racine de du dossier 'public hosting'
 Supprimez le sous-répertoire'mobile' qui a été créé précédemment.
+
+Solution des erreurs possibles
+------------------------------
+Si votre installation Zencart se trouve dans un sous-dossier (par exemple : /catalog ou /zencart) alors vous devez modifier l’adresse vers le fichier mobile.php dans le fichier .htaccess
+
+Exemple : si votre fichier mobile.php se trouve à l’adresse http://myshoppingcart.com/zencart/mobile.php alors la ligne dans .htaccess doit être la suivante :
+ 
+RewriteRule .* /zencart/mobile.php [L] 

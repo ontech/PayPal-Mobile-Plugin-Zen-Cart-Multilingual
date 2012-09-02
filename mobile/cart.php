@@ -9,7 +9,7 @@
 	
 	if ($cartempty == 0) {
 	
-	echo '<p>Your cart is empty</p>';
+	echo '<p>' . $_['Your cart is empty'] . '</p>';
 	
 	} else {
 

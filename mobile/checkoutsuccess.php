@@ -14,3 +14,4 @@
 ?>
 
 <?php include 'returntodesktop.php' ?>
+<?php include 'footer.php'; ?>

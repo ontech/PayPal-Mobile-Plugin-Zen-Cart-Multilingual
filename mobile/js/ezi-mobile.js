@@ -218,6 +218,7 @@ $("#search, #categories, .carticon").live("click", function(evt) {
 
 	var Link = $(this);	
 	var Panel = $("#" + {"search" : "searchpanel", "categories" : "cat", "cartlink" : "cartpanel"}[this.id]);	
+	Panel.hide();
 
 	if(!Panel.is(":visible"))
 	{

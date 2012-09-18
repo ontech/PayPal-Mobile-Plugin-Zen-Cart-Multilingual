@@ -17,7 +17,7 @@ Produit par ezimerchant
    * i. Cliquez sur "Enregistrer"
 3. Extrayez le contenu du plugin dans votre dossier 'public'. mobile.php doit être à la racine de votre dossier 'public', qui contient le sous-répertoire 'mobile'.  
 4. Si vous avez un fichier .htaccess dans le dossier 'hosting', faites-en une sauvegarde. 
-5.Fusionnez le fichier mobile.htaccess avec le fichier .htaccess (si vous en avez). Il contient la détection Mobile User Agent. Remarque : Si vous n'aviez pas de fichier .htaccess, renommez le fichier mobile.htaccess en .htaccess.
+5. Fusionnez le fichier mobile.htaccess avec le fichier .htaccess (si vous en avez). Il contient la détection Mobile User Agent. Remarque : Si vous n'aviez pas de fichier .htaccess, renommez le fichier mobile.htaccess en .htaccess.
 Vérifiez que le site Web s'affiche correctement sur votre ordinateur. 
 6. Faites de même sur le téléphone et testez le processus de commande
 

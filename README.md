@@ -1,7 +1,7 @@
-<h4><a href="#english">English</a> | <a href="#french">Francaise</a></h4>
+<h4><a href="#english">English</a> | <a href="#french">Français</a></h4>
 
 
-<a name="french">French</a>
+<a name="french">Français</a>
 ------
 Guide d'installation du plugin PayPal Mobile
 ============================================

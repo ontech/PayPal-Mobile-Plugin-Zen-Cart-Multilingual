@@ -32,12 +32,17 @@
 	
 	$_SESSION = array_merge($defaults, $_SESSION);		
 	include("mobile/language_".$_SESSION['languages_code'] .".php");
-
-
-	$_SESSION['PaypalLanguages'] = array();
-	$_SESSION['PaypalLanguages']['language'] = $_SESSION['languages_code'] . "_" . strtoupper($_SESSION['languages_code']);
-	$_SESSION['PaypalLanguages']['checkoutWithPaypal'] = "mobile/images/" . $_SESSION['PaypalLanguages']['language'] . "/_buttons/@2x/normal/CO_" . $_SESSION['PaypalLanguages']['language'] . "_orange_19x24@2x.png";
-	$_SESSION['PaypalLanguages']['checkoutWithPaypalDown'] = "mobile/images/" . $_SESSION['PaypalLanguages']['language'] . "/_buttons/@2x/normal/CO_" . $_SESSION['PaypalLanguages']['language'] . "_orange_19x24@2x.png";
+	
+	function get_paypalLanguages(){ 
+		$l = array();
+		$l['language'] = $_SESSION['languages_code'] . "_" . strtoupper($_SESSION['languages_code']);
+		
+		$l['checkoutWithPaypal'] = "mobile/images/" . $l['language'] . "/_buttons/@2x/normal/CO_".$l['language']."_orange_119x24_@2x.png";
+		$l['checkoutWithPaypalDown'] = "mobile/images/" . $l['language'] . "/_buttons/@2x/pressed/CO_".$l['language']."_orange_119x24_@2x_P.png";
+		
+		return $l;
+	}
+	$_SESSION['PaypalLanguages'] = get_paypalLanguages();
 	$_SESSION['paypal_ec_markflow'] = 1;
 
         

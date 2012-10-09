@@ -114,15 +114,13 @@ function matchcart(){
 	$pattern = '/index.php\?main_page=shopping_cart/';
 	preg_match($pattern, $subject, $matches);
 	
-	if ($matches) {
-	
-
-		include 'mobile/cart.php';
-		die();
-	}
+	return (boolean) $matches;
 }
-matchcart();
-	
+if(matchcart())
+{
+	include 'mobile/cart.php';
+	die();
+}	
 
 function matchcheckoutsuccess(){
 	global $zv_orders_id, $orders_id, $orders, $define_page, $template;
@@ -135,12 +133,13 @@ function matchcheckoutsuccess(){
 
 	$pattern = '/index.php\?main_page=checkout_success/';
 	preg_match($pattern, $subject, $matches);
-	if ($matches) {
-		include 'mobile/checkoutsuccess.php';
-		die();
-	}
+	return (boolean) $matches;
 }
-matchcheckoutsuccess();
+if(matchcheckoutsuccess())
+{
+	include 'mobile/checkoutsuccess.php';
+	die();
+}
 
 function matchminicart(){
 	global $template, $currencies;
@@ -153,12 +152,13 @@ function matchminicart(){
   
 	$pattern = '/minicart.php/';
 	preg_match($pattern, $subject, $matches);
-	if ($matches) {
+	return (boolean) $matches;
+	
+}
+if (matchminicart()) {
 		include 'mobile/minicart.php';
 		die();
-	}
 }
-matchminicart();
 
 function matchminicartview(){
 	global $template, $currencies;
@@ -171,12 +171,16 @@ function matchminicartview(){
 
 	$pattern = '/minicartview.php/';
 	preg_match($pattern, $subject, $matches);
+	return (boolean) $matches;
 	if ($matches) {
-		include 'mobile/minicartview.php';
-		die();
+		
 	}
 }
-matchminicartview();
+if(matchminicartview())
+{
+	include 'mobile/minicartview.php';
+	die();
+}
 
 function matchcategory(){
 	global $db, $zco_notifier, $template;
@@ -190,11 +194,8 @@ function matchcategory(){
 	$pattern = '/^\/category\d+_\d+\.htm(?:$|\?)/';
 
 	preg_match($pattern, $subject, $matches);
-	if ($matches) {
-		return true;
-	}
-	
-	return false;
+	return (boolean) $matches;
+
 }
 if(matchcategory())
 {
@@ -215,12 +216,13 @@ function matchcookies() {
   
 	$pattern = '/cookies.php/';
 	preg_match($pattern, $subject, $matches);
-	if ($matches) {
-		include 'mobile/cookies.php';
-		die();
-	}
+	return (boolean) $matches;
 }
-matchcookies();
+if(matchcookies())
+{
+	include 'mobile/cookies.php';
+	die();
+}
 
 
 function matchproduct(){
@@ -234,6 +236,7 @@ function matchproduct(){
 
 	$pattern = '/^\/prod\d+\.htm(?:$|\?)/';
 	preg_match($pattern, $subject, $matches);
+	
 	if ($matches) {
 		return true;
 	}
@@ -297,14 +300,15 @@ function matchsearch(){
 //http://fr.eztxn.com/index.php?main_page=advanced_search&keyword=fgddhg&inc_subcat=0&search_in_description=0&sort=20a
 
 	preg_match($pattern, $subject, $matches);
-	if ($matches) {
-		$select_column_list = 'pd.products_name, p.products_image, ';
-		require('includes/index_filters/default_filter.php');
-		include 'mobile/search.php';
-		die();
-	}
+	return (boolean) $matches;
 }
-matchsearch();
+if(matchsearch())
+{
+	$select_column_list = 'pd.products_name, p.products_image, ';
+	require('includes/index_filters/default_filter.php');
+	include 'mobile/search.php';
+	die();
+}
 
 function mobile_image($src)
 {

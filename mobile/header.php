@@ -1,6 +1,6 @@
 <?php if(!isset($_)) require('language_fr.php'); ?>
 <!DOCTYPE html>
-	<html lang="fr">
+	<html lang="<?php echo $_SESSION['languages_code'] ?>">
 	<head>
     <title><?php echo HOME_PAGE_TITLE; ?></title>
 	<meta charset="UTF-8" />

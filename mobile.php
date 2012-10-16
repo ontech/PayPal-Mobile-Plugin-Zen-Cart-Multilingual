@@ -37,8 +37,8 @@
 		$l = array();
 		$l['language'] = $_SESSION['languages_code'] . "_" . strtoupper($_SESSION['languages_code']);
 		
-		$l['checkoutWithPaypal'] = "mobile/images/" . $l['language'] . "/_buttons/@2x/normal/CO_".$l['language']."_orange_119x24_@2x.png";
-		$l['checkoutWithPaypalDown'] = "mobile/images/" . $l['language'] . "/_buttons/@2x/pressed/CO_".$l['language']."_orange_119x24_@2x_P.png";
+		$l['checkoutWithPaypal'] = "mobile/images/" . $l['language'] . "/".$l['language'].".png";
+		$l['checkoutWithPaypalDown'] = "mobile/images/" . $l['language'] . "/".$l['language']."_pressed.png";
 		
 		return $l;
 	}

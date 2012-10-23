@@ -297,7 +297,6 @@ function matchsearch(){
 	$subject = preg_replace("/".preg_quote($catalogFolder, "/")."/", "", $requestURI);
 
 	$pattern = '/(^\/search\/?(?:$|\?)|^\/index\.php\?main_page=advanced_search)/';
-//http://fr.eztxn.com/index.php?main_page=advanced_search&keyword=fgddhg&inc_subcat=0&search_in_description=0&sort=20a
 
 	preg_match($pattern, $subject, $matches);
 	return (boolean) $matches;

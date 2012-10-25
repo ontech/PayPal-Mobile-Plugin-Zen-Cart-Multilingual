@@ -41,5 +41,5 @@ $_['There is no description for this product'] = 'There is no description for th
 $_['You have x items in your cart the total is y'] = 'Votre panier contient <span class="itemcount">{count}</span> article(s).<br/>Total: <span class="total">{total}</span>';
 $_['Your order number is x'] = "Votre numéro de commande: {order}";
 foreach($_ as $k => $v){
-	$_[$k] =  iconv("ISO-8859-1//TRANSLIT","UTF-8", $v);
+	$_[$k] =  iconv("ISO-8859-1//TRANSLIT",CHARSET, $v);
 }

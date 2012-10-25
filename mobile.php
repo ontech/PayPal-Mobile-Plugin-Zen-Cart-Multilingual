@@ -1,7 +1,21 @@
 <?php
+        /* =============
+         * CONFIGURATION
+         * =============*/
+        define("SHIPPING_SELECTOR", "on");
 	define("IPN_HANDLER", "ipn_main_handler.php");
+        $defaults = array(
+		'languages_code' => 'fr',
+		'language' => 'french',
+		'languages_id' => 2
+	);
+        
+         /* =============
+         *  DEBUG
+         *  =============*/
 	ini_set('display_errors', 'off');
 	error_reporting(0);
+        
 	function e(){
 
 		if(strpos(func_get_arg(1), 'is_a()')===FALSE 
@@ -21,15 +35,8 @@
 	//set_error_handler('e');
 	//set_exception_handler('e');
 
-	$defaults = array(
-		'languages_code' => 'fr',
-		'language' => 'french',
-		'languages_id' => 2
-	);
-
 	if(!defined('SKIP_SINGLE_PRODUCT_CATEGORIES')) define('SKIP_SINGLE_PRODUCT_CATEGORIES', 'False');
 	require('includes/application_top.php');
-	
 	$_SESSION = array_merge($defaults, $_SESSION);		
 	include("mobile/language_".$_SESSION['languages_code'] .".php");
 	
@@ -43,8 +50,16 @@
 		return $l;
 	}
 	$_SESSION['PaypalLanguages'] = get_paypalLanguages();
-	$_SESSION['paypal_ec_markflow'] = 1;
-
+        $_SESSION['paypal_ec_markflow'] = 1;
+        if(SHIPPING_SELECTOR=='on') 
+        {
+            $_SESSION['paypal_ec_markflow'] = 0;
+            if($_GET['main_page']=='checkout_shipping' && $_POST) 
+            {
+                    $_SESSION['checkout_shipping_done'] = true;
+            }
+        }
+        header("Content-Type: text/html; charset=" . CHARSET);
         
 	if(isset($_GET["main_page"]) && $_GET["main_page"] == "login")
 	{
@@ -67,12 +82,12 @@
 			require($code_page_directory . '/' . $value);
 	}
 
-/* Debugging
-$device = $_SERVER['template'];
-echo "this device is a $device";
-$pagename = 
+        /* Debugging
+        $device = $_SERVER['template'];
+        echo "this device is a $device";
+        $pagename = 
 
-*/
+        */
 
 function matchhome(){
 	global $db, $zco_notifier, $template;
@@ -99,6 +114,61 @@ if(matchhome())
 	include 'mobile/index.php';
 	die();
 }
+function matchpayment() {
+
+    $requestURI = $_SERVER['REQUEST_URI'];
+
+    $catalogFolder = DIR_WS_CATALOG;
+    $catalogFolder = preg_replace("/\\/$/", "", $catalogFolder);
+    $subject = preg_replace("/" . preg_quote($catalogFolder, "/") . "/", "", $requestURI);
+
+    $pattern = '/index.php\?main_page=checkout_payment/';
+    preg_match($pattern, $subject, $matches);
+
+    return (boolean) $matches;
+}
+if (matchpayment()) {
+
+    if(isset($_SESSION['checkout_shipping_done']) && $_SESSION['checkout_shipping_done'])
+    {
+        unset($_SESSION['checkout_shipping_done']);
+        header("Location: " . 'http'.(empty($_SERVER['HTTPS'])?'':'s').'://'.$_SERVER['SERVER_NAME'].str_replace("checkout_payment", "checkout_process", $_SERVER['REQUEST_URI']) );
+    }
+    else 
+    {
+        unset($_SESSION['checkout_shipping_done']);
+        header("Location: " . 'http'.(empty($_SERVER['HTTPS'])?'':'s').'://'.$_SERVER['SERVER_NAME'].str_replace("checkout_payment", "checkout_shipping", $_SERVER['REQUEST_URI']) );
+    }
+}
+
+function matchshipping() {
+
+    $requestURI = $_SERVER['REQUEST_URI'];
+
+    $catalogFolder = DIR_WS_CATALOG;
+    $catalogFolder = preg_replace("/\\/$/", "", $catalogFolder);
+    $subject = preg_replace("/" . preg_quote($catalogFolder, "/") . "/", "", $requestURI);
+
+    $pattern = '/index.php\?main_page=checkout_shipping/';
+    preg_match($pattern, $subject, $matches);
+
+    return (boolean) $matches;
+}
+if(matchshipping())
+{
+    if(SHIPPING_SELECTOR == "on")
+    {
+        
+         require_once(DIR_WS_MODULES . 'pages/checkout_shipping/header_php.php');
+         require($template->get_template_dir('main_template_vars.php',DIR_WS_TEMPLATE, $current_page_base,'common'). '/main_template_vars.php');
+         include('mobile/checkoutshipping.php');
+    }
+    else
+    	header("Location: " . 'http'.(empty($_SERVER['HTTPS'])?'':'s').'://'.$_SERVER['SERVER_NAME'].str_replace("checkout_payment", "checkout_process", $_SERVER['REQUEST_URI']) );
+    die();
+} 
+
+
 function matchcart(){
 	global $productArray;
 	global $cartShowTotal;
@@ -309,6 +379,7 @@ if(matchsearch())
 	die();
 }
 
+
 function mobile_image($src)
 {
 	if($src == DIR_WS_IMAGES && PRODUCTS_IMAGE_NO_IMAGE_STATUS == '1')
@@ -324,4 +395,5 @@ function mobile_image($src)
  
     return $src;
 }
-?>
+
+include 'mobile/page.php';

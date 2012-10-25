@@ -44,7 +44,7 @@ $_['Your order number is x'] = "Your order number is: {order}";
 
 foreach($_ as $k => $v){
 
-	$_[$k] =  iconv("ISO-8859-1//TRANSLIT","UTF-8", $v);
+	$_[$k] =  iconv("ISO-8859-1//TRANSLIT",CHARSET, $v);
 
 }
 

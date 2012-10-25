@@ -10,7 +10,7 @@ $listing_sql =
 	IF(s.status = 1, s.specials_new_products_price, NULL) as specials_new_products_price, IF(s.status =1, 
 	s.specials_new_products_price, p.products_price) as final_price, p.products_sort_order, p.product_is_call, 
 	p.product_is_always_free_shipping, p.products_qty_box_status 
-from " . DB_PREFIX . "products_description pd, " . DB_PREFIX . "products p 
+ from " . DB_PREFIX . "products_description pd, " . DB_PREFIX . "products p 
 left join " . DB_PREFIX . "manufacturers m on p.manufacturers_id = m.manufacturers_id, 
 " . DB_PREFIX . "products_to_categories p2c left join " . DB_PREFIX .
  "specials s on p2c.products_id = s.products_id where p.products_status = 1 and

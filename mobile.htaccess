@@ -6,6 +6,9 @@ RewriteEngine on
 # comment the next line to put the mobile plugin in live mode only (add the "#")
 RewriteCond %{HTTP_COOKIE}      ^.*miabdebug=1.*$ [NC]
 
+# change the following directory to your admin dir in order to access your admin from mobile
+RewriteCond %{REQUEST_URI}      !/admin
+
 # ezimerchant mobile redirect
 RewriteCond %{HTTP_COOKIE} 	!^.*showdesktop=1.*$ [NC]
 RewriteCond %{REQUEST_URI}      !/mobile

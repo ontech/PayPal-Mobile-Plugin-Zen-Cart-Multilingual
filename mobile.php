@@ -128,19 +128,45 @@ function matchpayment() {
     return (boolean) $matches;
 }
 if (matchpayment()) {
-
+	
     if(isset($_SESSION['checkout_shipping_done']) && $_SESSION['checkout_shipping_done'])
     {
+	
         unset($_SESSION['checkout_shipping_done']);
-        header("Location: " . 'http'.(empty($_SERVER['HTTPS'])?'':'s').'://'.$_SERVER['SERVER_NAME'].str_replace("checkout_payment", "checkout_process", $_SERVER['REQUEST_URI']) );
+	 require_once(DIR_WS_MODULES . 'pages/checkout_payment/header_php.php');
+         require($template->get_template_dir('main_template_vars.php',DIR_WS_TEMPLATE, $current_page_base,'common'). '/main_template_vars.php');
+         
+
+        header("Location: " . 'http'.(empty($_SERVER['HTTPS'])?'':'s').'://'.$_SERVER['SERVER_NAME'].str_replace("checkout_payment", "checkout_confirmation", $_SERVER['REQUEST_URI']) );
     }
     else 
     {
         unset($_SESSION['checkout_shipping_done']);
         header("Location: " . 'http'.(empty($_SERVER['HTTPS'])?'':'s').'://'.$_SERVER['SERVER_NAME'].str_replace("checkout_payment", "checkout_shipping", $_SERVER['REQUEST_URI']) );
     }
+	die;
 }
+function matchconfirmation(){
+    $requestURI = $_SERVER['REQUEST_URI'];
 
+    $catalogFolder = DIR_WS_CATALOG;
+    $catalogFolder = preg_replace("/\\/$/", "", $catalogFolder);
+    $subject = preg_replace("/" . preg_quote($catalogFolder, "/") . "/", "", $requestURI);
+
+    $pattern = '/index.php\?main_page=checkout_confirmation/';
+    preg_match($pattern, $subject, $matches);
+
+    return (boolean) $matches;
+}
+if(matchconfirmation())
+{
+	$_POST['payment'] = "paypalwpp";
+
+    	require_once(DIR_WS_MODULES . 'pages/checkout_confirmation/header_php.php');      
+	require($template->get_template_dir('main_template_vars.php',DIR_WS_TEMPLATE, $current_page_base,'common'). '/main_template_vars.php');
+	header("Location: " . 'http'.(empty($_SERVER['HTTPS'])?'':'s').'://'.$_SERVER['SERVER_NAME'].str_replace("checkout_confirmation", "checkout_process", $_SERVER['REQUEST_URI']) );    
+	die;
+}
 function matchshipping() {
 
     $requestURI = $_SERVER['REQUEST_URI'];
@@ -168,6 +194,28 @@ if(matchshipping())
     die();
 } 
 
+function matchprocess() {
+
+    $requestURI = $_SERVER['REQUEST_URI'];
+
+    $catalogFolder = DIR_WS_CATALOG;
+    $catalogFolder = preg_replace("/\\/$/", "", $catalogFolder);
+    $subject = preg_replace("/" . preg_quote($catalogFolder, "/") . "/", "", $requestURI);
+
+    $pattern = '/index.php\?main_page=checkout_process/';
+    preg_match($pattern, $subject, $matches);
+
+    return (boolean) $matches;
+}
+if(matchprocess())
+{
+
+    require_once(DIR_WS_MODULES . 'pages/checkout_process/header_php.php');
+    require($template->get_template_dir('main_template_vars.php',DIR_WS_TEMPLATE, $current_page_base,'common'). '/main_template_vars.php');
+    
+   
+    die();
+} 
 
 function matchcart(){
 	global $productArray;
@@ -210,6 +258,8 @@ if(matchcheckoutsuccess())
 	include 'mobile/checkoutsuccess.php';
 	die();
 }
+
+
 
 function matchminicart(){
 	global $template, $currencies;

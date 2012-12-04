@@ -33,36 +33,28 @@
         return true;
     }
     $(function(){
-        var total = $(".total").text();
-	
-        $("tr.moduleRow td").click(function(){
-            var row = $(this).closest('tr');
-            if(! row.find("[name=shipping]").is(":checked") )
-            {
-				
-                row.find("[name=shipping]").attr("checked","checked");
-                $("tr.active").removeClass("active");
-                row.addClass("active");
+        var total = parseFloat($(".total").text());
+		var shipping = parseFloat($("[name=shipping]:checked").closest("div.ui-radio").find("span.important.forward").text().replace(/\$/,''));
 
-                $("[type=submit]").attr('disabled','disabled').closest("div.ui-btn").css("opacity", "0.4");
+		$('.total').html(parseFloat(total + shipping).toFixed(2));
 		
-				
-                $.ajax({
-                    data: {action:"process", shipping: $("[name=shipping]:checked").val()},
+        $("[name=shipping]").change(function(){
+		var selectedshipping = parseFloat($("[name=shipping]:checked").closest("div.ui-radio").find("span.important.forward").text().replace(/\$/,''));
+		$('.total').html(parseFloat(total + selectedshipping).toFixed(2));
+
+  		/* $("[type=submit]").attr('disabled','disabled').closest(".buttonRow.forward").css("opacity", "0.4");
+
+		 $.ajax({
+		    url: "?main_page=checkout_shipping",
+                    data: {action:"process", shipping: $("[name=shipping]:checked").val(), comments: $('[name=comments]').val()},
                     type: "POST",
                     success: function(r){
-                        $("[type=submit]").removeAttr('disabled').closest("div.ui-btn").css("opacity", "1");
-                    }
-                });
 
-                var price = row.find("td:nth-child(3)").text().match(/\d+\.\d+/);
-                var first = $("tr.moduleRowSelected td:nth-child(3)").text().match(/\d+\.\d+/);
-                $(".total").html(total - parseFloat(first) + parseFloat(price));
-				
-				
-            }			
+                        $("[type=submit]").removeAttr('disabled').closest(".buttonRow.forward").css("opacity", "1");
+                    }
+                }); */
+
         });
-        $("tr.moduleRowSelected").addClass("active");
 
     });
 </script>
@@ -74,7 +66,7 @@
 
             <?php echo zen_draw_form('checkout_address', zen_href_link(FILENAME_CHECKOUT_SHIPPING, '', 'SSL'), 'POST', 'data-ajax="false"') . zen_draw_hidden_field('action', 'process'); ?>
 
-            <h1 id="checkoutShippingHeading"><?php echo HEADING_TITLE; ?></h1>
+            <h1 id="checkoutShippingHeading"><?php echo $_['Addresses']; ?></h1>
             <?php if ($messageStack->size('checkout_shipping') > 0) echo $messageStack->output('checkout_shipping'); ?>
 
             <h2 id="checkoutShippingHeadingAddress"><?php echo TITLE_SHIPPING_ADDRESS; ?></h2>
@@ -187,12 +179,14 @@
                 <?php
             }
             ?>
+
+
             <fieldset class="shipping" id="comments">
                 <legend><?php echo TABLE_HEADING_COMMENTS; ?></legend>
 <?php echo zen_draw_textarea_field('comments', '45', '3'); ?>
             </fieldset>
-
-                <div class="buttonRow forward">  <input type="submit" value="<?php echo ucwords(BUTTON_CONTINUE_ALT) ?>" data-theme="e" data-role="button" />
+                <div style="line-height:2em; font-size: 1.5em;text-align:center;">Total: <span class="total"><?php echo number_format($_SESSION['cart']->total,2) ?></span></div>
+                <div class="buttonRow forward">  <input type="submit" value="<?php echo ucwords($_['Pay Now']) ?>" data-theme="e" data-role="button" />
             </div>
 
             </form>

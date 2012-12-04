@@ -40,6 +40,7 @@ $_['Edit Cart'] = "Modifier le panier";
 $_['There is no description for this product'] = 'There is no description for this product';
 $_['You have x items in your cart the total is y'] = 'Votre panier contient <span class="itemcount">{count}</span> article(s).<br/>Total: <span class="total">{total}</span>';
 $_['Your order number is x'] = "Votre numéro de commande: {order}";
+$_['Pay Now'] = "Payer";
 foreach($_ as $k => $v){
 	$_[$k] =  iconv("ISO-8859-1//TRANSLIT",CHARSET, $v);
 }

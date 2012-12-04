@@ -41,7 +41,7 @@ $_['Edit Cart'] = "Edit Cart";
 $_['There is no description for this product'] = 'There is no description for this product';
 $_['You have x items in your cart the total is y'] = 'You have <span class="itemcount">{count}</span> item(s).<br/>Total: <span class="total">{total}</span>';
 $_['Your order number is x'] = "Your order number is: {order}";
-
+$_['Pay Now'] = "Pay Now";
 foreach($_ as $k => $v){
 
 	$_[$k] =  iconv("ISO-8859-1//TRANSLIT",CHARSET, $v);

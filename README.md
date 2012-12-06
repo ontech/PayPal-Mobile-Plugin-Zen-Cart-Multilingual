@@ -1,5 +1,56 @@
-<h4><a href="#english"><img src="https://raw.github.com/ontech/PayPal-Mobile-Plugin-Zen-Cart-Multilingual/master/mobile/images/flags/gb.png" alt="English" /> English</a> | <a href="#french"><img src="https://raw.github.com/ontech/PayPal-Mobile-Plugin-Zen-Cart-Multilingual/master/mobile/images/flags/fr.png" alt="Français" /> Français</a></h4>
+<h4><a href="#english"><img src="https://raw.github.com/ontech/PayPal-Mobile-Plugin-Zen-Cart-Multilingual/master/mobile/images/flags/gb.png" alt="English" /> English</a> | <a href="#french"><img src="https://raw.github.com/ontech/PayPal-Mobile-Plugin-Zen-Cart-Multilingual/master/mobile/images/flags/fr.png" alt="Français" /> Français</a>| <a href="#spanish"> <img src="https://raw.github.com/ontech/PayPal-Mobile-Plugin-Zen-Cart-Multilingual/master/mobile/images/flags/es.png" alt="Espanol" /> Espanol</a></h4> 
 
+<a name="spanish">Espanol</a>
+------
+
+Instrucciones de instalación del complemento de PayPal móvil
+============================================
+Con tecnología ezimerchant
+--------------------------
+
+1. Haga clic en el botón 'ZIP' de la parte superior de la página para descargar el complemento.
+2. Si aún no ha configurado Pago exprés de PayPal en su instalación de Zen Cart, siga estas instrucciones; si ya lo ha hecho, vaya directamente al paso 3:
+ * a. Inicie sesión en su cuenta PayPal.
+ * b. En la pestaña 'Mi cuenta', haga clic en 'Perfil'.
+ * c. En la sección 'Vender en Internet', haga clic en el botón 'Actualizar' junto a la línea 'Acceso de API'.
+ * d. Bajo la opción 2 de la pantalla siguiente, haga clic en 'Ver firma de API'.
+ * e. Usará estos detalles de la página para cumplimentar las credenciales de API en Zen Cart.
+ * f. Inicie sesión en Zen Cart.
+ * g. Vaya a Modules -> Payment y haga clic en Pago exprés de PayPal.
+ * h. Use los datos del paso 2e. (cópielos y péguelos).
+ * i. Pulse Guardar.
+3. Descomprima el contenido del complemento en su directorio público (excepto la carpeta 'includes'). mobile.php se encontrará en la base de su directorio público y la carpeta 'mobile' será una subcarpeta suya. Haga una copia de seguridad de su archivo .htaccess actual en su directorio de alojamiento público, si lo tiene.
+4. Fusione el archivo mobile.htaccess con su archivo .htaccess existente (si ya tiene uno). Contiene la detección del agente de usuarios de móvil. Nota: si aún no tiene un archivo .htaccess, cambie el nombre de mobile.htaccess a .htaccess.
+5. Compruebe que el sitio aún funciona en su ordenador de escritorio.
+6. Compruebe el sitio en su teléfono y pruebe el flujo de transacciones.
+
+Modificaciones de ZenCart para permitir el retorno al sitio móvil tras volver al escritorio.
+---------------------------------------------------------------------------------------------
+
+Con los pasos precedentes se insertaron tres archivos en el directorio 'includes' para mostrar un recuadro lateral que indicaría el momento en que un usuario de móvil volviera al escritorio. De este modo, se permite que a continuación el usuario vuelva al sitio móvil. Debe trasladar estos archivos para colocarlos bajo su propia plantilla en lugar de la ruta YOUR_TEMPLATE designada.
+
+Descomprima la carpeta 'includes' del archivo ZIP en un directorio local.
+
+Mire en la carpeta YOUR_TEMPLATE y cambie el nombre de la carpeta por el de la plantilla actual de su ZenCart.
+
+Copie la carpeta 'includes' a su ubicación de ZenCart.
+
+Inicie sesión como administrador y coloque el recuadro lateral donde desee.
+
+Instrucciones para cancelar la instalación
+-----------------------------------------
+Elimine los cambios que realizó en el archivo .htacess. Alternativamente, use la copia de seguridad de .htaccess para sobrescribir los cambios. Esto debería restaurar la funcionalidad anterior.
+
+Versiones admitidas y verificadas
+----------------------
+ZenCart 1.3.8h, ZenCart 1.3.9h, ZenCart 1.5.0
+
+Pasos opcionales
+----------------------
+
+Elimine el archivo mobile.php de la carpeta raíz de su directorio de alojamiento público.
+
+Elimine el subdirectorio móvil cargado anteriormente.
 
 <a name="french">Français</a>
 ------

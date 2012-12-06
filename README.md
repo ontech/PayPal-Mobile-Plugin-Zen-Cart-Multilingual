@@ -1,4 +1,113 @@
-<h4><a href="#english"><img src="https://raw.github.com/ontech/PayPal-Mobile-Plugin-Zen-Cart-Multilingual/master/mobile/images/flags/gb.png" alt="English" /> English</a> | <a href="#french"><img src="https://raw.github.com/ontech/PayPal-Mobile-Plugin-Zen-Cart-Multilingual/master/mobile/images/flags/fr.png" alt="Français" /> Français</a>| <a href="#spanish"> <img src="https://raw.github.com/ontech/PayPal-Mobile-Plugin-Zen-Cart-Multilingual/master/mobile/images/flags/es.png" alt="Espanol" /> Espanol</a></h4> 
+<h4>
+  <a href="#english"><img src="https://raw.github.com/ontech/PayPal-Mobile-Plugin-Zen-Cart-Multilingual/master/mobile/images/flags/gb.png" alt="English" /> 
+    English
+  </a> &nbsp;
+  <a href="#french"><img src="https://raw.github.com/ontech/PayPal-Mobile-Plugin-Zen-Cart-Multilingual/master/mobile/images/flags/fr.png" alt="Français" />
+    Français
+  </a>  &nbsp;
+  <a href="#spanish"><img src="https://raw.github.com/ontech/PayPal-Mobile-Plugin-Zen-Cart-Multilingual/master/mobile/images/flags/es.png" alt="Espanol" />
+    Espanol
+  </a>  &nbsp;
+  <a href="#italian"><img src="https://raw.github.com/ontech/PayPal-Mobile-Plugin-Zen-Cart-Multilingual/master/mobile/images/flags/it.png" alt="Italian" />
+    Italian
+  </a>  &nbsp;
+  <a href="#dutch"><img src="https://raw.github.com/ontech/PayPal-Mobile-Plugin-Zen-Cart-Multilingual/master/mobile/images/flags/nl.png" alt="Dutch" />
+    Dutch
+  </a> 
+</h4> 
+
+<a name="dutch">Dutch</a>
+--------
+
+Installatie-instructies voor de plug-in voor PayPal Mobiel
+====================
+Met technologie van ezimerchant
+
+1. Klik op de knop 'ZIP' boven aan deze pagina om de plug-in te downloaden.
+2. Als u PayPal Express Checkout nog niet in uw installatie van ZenCart heeft ingesteld, volgt u onderstaande instructies. Als PayPal Express Checkout al is ingesteld, gaat u verder met stap 3:
+ * a. Log in op uw PayPal-rekening
+ * b. Klik op het tabblad 'Mijn rekening' op 'Profiel'
+ * c. Klik in het gedeelte 'Online verkopen' op de knop 'Bijwerken' naast de regel met API-toegang.
+ * d. Klik in het volgende scherm bij Optie 2 op 'Bekijk API-handtekening'
+ * e. Deze gegevens gebruikt u op de pagina waar u de API-referenties in Zencart invult.
+ * f. Log in bij ZenCart
+ * g. Ga naar Modules (Modules) -> Payment (Betaling) en klik op PayPal Express checkout.
+ * h. Gebruik de gegevens uit stap 2e. en vul ze in door te kopiëren en plakken.
+ * i. Klik op Save (Opslaan).
+3. Unzip de plug-in en pak de inhoud uit in uw openbare directory, met uitzondering van de map 'includes'. mobile.php bevindt zich in de hoofdmap van uw openbare directory; de map 'mobile' is een submap van deze hoofdmap.
+4. Maak een back-upkopie van uw huidige .htaccess-bestand in uw openbare hostingdirectory, mits u die heeft.
+5. Voeg het bestand mobile.htaccess samen met uw bestaande .htaccess-bestand (als u al een dergelijk bestand had). Dit bestand detecteert de agent voor mobiele gebruikers. Opmerking: als er nog geen .htaccess-bestand is, wijzigt u de naam van het bestand mobile.htaccess in .htaccess
+6. Controleer vanaf uw desktopcomputer of de website nog steeds goed functioneert.
+7. Controleer de website op uw telefoon en test de transactiestroom.
+
+ZenCart-modificaties die de functie 'Terugkeren naar de mobiele website na een bezoek via de desktop' ondersteunen.
+----------------------------
+1. Via bovenstaande stappen zijn drie bestanden in uw directory 'includes' ingevoegd die ervoor zorgen dat er een vakje aan de zijkant wordt weergegeven als een mobiele gebruiker de website bezoekt via een desktopcomputer. Met behulp hiervan kan de gebruiker naar de mobiele website terugkeren. Deze bestanden moeten worden verplaatst, zodat ze zich onder uw eigen sjabloon bevinden in plaats van in het aangewezen YOUR_TEMPLATE-pad.
+2. Pak het ZIP-bestand met de map 'includes' uit naar een lokale directory.
+3. Zoek YOUR_TEMPLATE in de map en wijzig de naam van de map in de naam van uw huidige sjabloon voor ZenCart.
+4. Kopieer de map 'includes' naar uw ZenCart-locatie.
+5. Log in als beheerder en verplaats desgewenst het vak aan de zijkant.
+
+Instructies om de installatie ongedaan te maken
+----------------------------
+Verwijder de wijzigingen die u in het bestand .htaccess heeft aangebracht. Of gebruik de back-upkopie van .htaccess om de wijzigingen te overschrijven. Hierdoor wordt de eerdere functionaliteit automatisch hersteld.
+
+Optionele stappen
+
+Verwijder het bestand mobile.php uit de hoofddirectory van uw openbare hostingdirectory.
+
+Verwijder de eerder upgeloade 'mobile'-subdirectory."
+
+Ondersteunde en geteste versies
+--------------------
+ZenCart 1.3.8h, ZenCart 1.3.9h, ZenCart 1.5.0
+
+
+<a name="italian">Italian</a>
+-------
+Istruzioni di installazione plugin PayPal Mobile
+=================================================
+Powered by ezimerchant
+
+1. Clicca il pulsante ""ZIP"" nella parte superiore della pagina per scaricare il plugin.
+2. Se non hai ancora installato il Pagamento express PayPal nell'installazione Zen Cart, segui queste istruzioni; in caso contrario passa al punto 3:
+ * a. Accedi al conto PayPal
+ * b. Nella sezione Il mio account, clicca Profilo
+ * c. Nella sezione Vendita online, clicca Aggiorna accanto alla riga Accesso API.
+ * d. All'interno dell'opzione 2 nella pagina successiva, clicca Vedi firma API
+ * e. Userai i dati della pagina per completare le credenziali API in Zen Cart.
+ * f. Accedi a Zen Cart
+ * g. Vai su Moduli-> Pagamento e clicca Pagamento express PayPal.
+ * h. Usa i dati del passaggio 2e copiandoli e incollandoli.
+ * i. Clicca Salva.
+3. Decomprimi i contenuti del plugin nella directory pubblica ad eccezione della cartella includes. mobile.php si troverà alla radice della directory pubblica mentre la cartella mobile rappresenterà una sottocartella all'interno di essa. Fai una copia di backup del file .htaccess attuale all'interno della directory di hosting pubblica, se presente.
+4. Unisci il file mobile.htaccess al file .htaccess presente (se disponibile). Contiene l'identificazione dell'agente utente mobile. Note: se non disponi di un file .htaccess, rinomina mobile.htaccess in .htaccess
+5. Controlla che il sito sia ancora in funzione sul tuo desktop.
+6. Controlla il sito sul tuo telefono e testa il flusso di transazione.
+
+Modifiche di Zen Cart per supportare la funzione di ritorno al sito mobile dopo il ritorno al desktop.
+------------------------------------------------------------------------
+I passaggi indicati in precedenza hanno inserito tre file nella directory includes per mostrare un riquadro laterale che appare quando un utente di dispositivi mobili torna al desktop. Tale riquadro consente all'utente di tornare al sito per dispositivi mobili. Questi file devono essere spostati nel percorso YOUR_OWN_TEMPLATE piuttosto che nel percorso YOUR_TEMPLATE designato. Decomprimi la cartella includes del file ZIP in una directory locale.
+
+Ricerca YOUR_TEMPLATE nella cartella e rinominala con il nome del modello corrente presente su Zen Cart.
+
+Copia la cartella includes nel percorso di Zen Cart. Accedi come amministratore e riposiziona il riquadro laterale nel modo che preferisci. 
+
+Istruzioni per annullamento installazione
+----------------------------------------
+1. Rimuovi le modifiche al file .htacess creato, oppure usa il file .htaccess di backup per sovrascrivere le modifiche. Questa operazione dovrebbe ripristinare le funzionalità precedenti.
+
+Passaggi facoltativi
+
+1. Rimuovi il file mobile.php nella radice della directory di hosting pubblica.
+2. Rimuovi la sottodirectory mobile caricata in precedenza.
+
+Versioni supportate e testate
+------------------------------
+Zen Cart 1.3.8h, Zen Cart 1.3.9h, Zen Cart 1.5.0
+
+
+
 
 <a name="spanish">Espanol</a>
 ------
@@ -41,16 +150,17 @@ Instrucciones para cancelar la instalación
 -----------------------------------------
 Elimine los cambios que realizó en el archivo .htacess. Alternativamente, use la copia de seguridad de .htaccess para sobrescribir los cambios. Esto debería restaurar la funcionalidad anterior.
 
-Versiones admitidas y verificadas
-----------------------
-ZenCart 1.3.8h, ZenCart 1.3.9h, ZenCart 1.5.0
-
 Pasos opcionales
-----------------------
 
 Elimine el archivo mobile.php de la carpeta raíz de su directorio de alojamiento público.
 
 Elimine el subdirectorio móvil cargado anteriormente.
+
+Versiones admitidas y verificadas
+----------------------
+ZenCart 1.3.8h, ZenCart 1.3.9h, ZenCart 1.5.0
+
+
 
 <a name="french">Français</a>
 ------

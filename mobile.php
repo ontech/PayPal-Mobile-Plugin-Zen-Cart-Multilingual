@@ -67,6 +67,12 @@
 		header("HTTP/1.1 303 See Other");
 		header("Location: http://".$_SERVER[HTTP_HOST]."/". DIR_WS_CATALOG ."/ipn_main_handler.php?type=ec");
 	}  
+	if(isset($_GET['ec_cancel']) && $_GET['ec_cancel']==1)
+        {
+                header("HTTP/1.1 303 See Other");
+                header("Location: http://".$_SERVER['HTTP_HOST']."/".DIR_WS_CATALOG."/index.php?main_page=shopping_cart");
+                die;
+        }
 
 
 	$language_page_directory = DIR_WS_LANGUAGES . $_SESSION['language'] . '/';
